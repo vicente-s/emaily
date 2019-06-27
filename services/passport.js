@@ -1,8 +1,11 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const keys = require('../config/keys')
+const keys = require('../config/keys');
+const mongoose = require('mongoose');
 
-//this is just to set up passport
+
+const User = mongoose.model('users')
+
 passport.use(
   new GoogleStrategy(
     {
@@ -13,9 +16,8 @@ passport.use(
     //arrow function as a callback
     //the refresh token allows us to periodically refresh the access token so that it doesnt expire
     (accessToken, refreshToken, profile, done) => {
-      console.log('accessToken', accessToken);
-      console.log('refreshToke', refreshToken);
-      console.log('profile', profile);
+      //.save takes the model instance and saves it to the database for us
+      new User({ googleID: profile.id}).save()
     }
   )
 );
