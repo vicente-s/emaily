@@ -23,7 +23,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
-      proxy true
+      proxy: true
     },
     //arrow function as a callback
     //the refresh token allows us to periodically refresh the access token so that it doesnt expire
