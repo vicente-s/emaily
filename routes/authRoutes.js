@@ -12,6 +12,7 @@ module.exports = app => {
   );
 
   // after user gets code from google to turn into a profile
+
   app.get(
     '/auth/google/callback',
       passport.authenticate('google')
