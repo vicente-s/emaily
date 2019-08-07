@@ -9,7 +9,7 @@ require('./services/passport')
 
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI)
+mongoose.connect(keys.mongoURI, { useNewUrlParser: true })
 const app = express();
 
 app.use(
