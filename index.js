@@ -30,6 +30,10 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
+
+if(process.env.NODE_ENV === 'production'){
+  app.use(express.static('client/build'));
+};
 //since heroku tells us which port to use, the line below figures out which port it is
 const PORT = process.env.PORT || 5000;
 
